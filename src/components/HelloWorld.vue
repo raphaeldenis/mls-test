@@ -7,6 +7,9 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import ResourceAPI from '@/services/marvelAPI';
+
+console.log(ResourceAPI.fetchAll('comics'));
 
 export default defineComponent({
   name: 'HelloWorld',

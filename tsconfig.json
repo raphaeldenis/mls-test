@@ -33,7 +33,7 @@
     "src/**/*.vue",
     "tests/**/*.ts",
     "tests/**/*.tsx"
-  ],
+, "src/services/marvelAPI.js"  ],
   "exclude": [
     "node_modules"
   ]
