@@ -1,43 +1,33 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import axios, { AxiosStatic } from 'axios';
 import md5 from 'md5';
 
 type Resource = 'heroes' | 'comics';
 
-interface Heroe {
-  id: string;
-  name: string;
-}
-
-const URLMARVELAPI = () => {
-  const { PUBLIC_KEY } = process.env;
-  const { PRIVATE_KEY } = process.env;
-  //   const BASE_URL = process.env.API_URL;
+const createMarvelAuth = (): string => {
+  // TODO: check why env messed up
+  // const { VUE_APP_PUBLICKEY } = process.env;
+  // const { VUE_APP_PRIVATEKEY } = process.env;
+  const publicKey = 'c1cd74947d09f3787a22c4b90e0b6810';
+  const privateKey = '87fd653a693e75a1d714d127e982739095978052';
   const timestamp = Number(new Date());
-  const stringToHash = PRIVATE_KEY ? timestamp + PRIVATE_KEY + PUBLIC_KEY : '';
+  const stringToHash = timestamp + privateKey + publicKey;
   const hash = md5(stringToHash);
-  const authMarvel = `ts=${timestamp}&apikey=${PUBLIC_KEY}&hash=${hash}`;
-
+  const authMarvel = `ts=${timestamp}&apikey=${publicKey}&hash=${hash}`;
   return authMarvel;
 };
 
 class ResourceAPI {
-  public static axiosInstance: AxiosStatic = axios;
+  public static authMarvel = createMarvelAuth();
 
-  public static authMarvel = URLMARVELAPI();
-
-  public static async fetchAll(resource: Resource): Promise<unknown> {
-    return this.axiosInstance.get(
-      `${process.env.API_URL}/${resource}?${await URLMARVELAPI()}`,
-    );
+  public static async fetchAll(resource: Resource): Promise<any> {
+    return axios.get(`${process.env.VUE_APP_APIURL}/${resource}?${this.authMarvel}`);
   }
 
-  public static async fetchByKey(
-    resource: Resource,
-    key: string,
-    value: string,
-  ): Promise<unknown> {
-    return this.axiosInstance.get(
-      `${process.env.API_URL}/${resource}?${key}=${value}&apikey=${process.env.API_KEY}`,
+  public static async fetchByKey(resource: Resource, key: string, value: string): Promise<unknown> {
+    return axios.get(
+      `${process.env.VUE_APP_APIURL}/${resource}?${key}=${value}&apikey=${process.env.API_KEY}`,
     );
   }
 }
