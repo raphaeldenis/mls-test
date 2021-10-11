@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
-import axios, { AxiosStatic } from 'axios';
+import axios from 'axios';
 import md5 from 'md5';
 
 type Resource = 'heroes' | 'comics';

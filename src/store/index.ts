@@ -13,8 +13,8 @@ export default createStore({
     },
   },
   actions: {
-    setComics({ commit }) {
-      commit('setComics');
+    setComics({ commit }, payload: Comics) {
+      commit('setComics', payload);
     },
   },
   modules: {},

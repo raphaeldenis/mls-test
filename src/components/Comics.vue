@@ -10,47 +10,26 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import MarvelAPI from '@/services/marvelAPI';
-import { Comics } from '@/types/Comics';
+import store from '@/store';
 
 export default defineComponent({
   name: 'Comics',
   data() {
     return {
-      comics: [] as Comics,
+      comics: store.state.comics,
     };
   },
   methods: {
     getComics() {
       MarvelAPI.fetchAll('comics')
         .then((response: any) => {
-          this.comics = response.data.data.results;
+          store.commit('setComics', response.data.data.results);
+          console.log(store.state.comics);
         })
         .catch((e: Error) => {
           console.warn(e);
         });
     },
-    // data() {
-    //   return {
-    //     // comics: [
-    //     //   { id: 0, name: 'test' },
-    //     //   { id: 1, name: 'test1' },
-    //     // ],
-    //     comics: [],
-    //   };
-    // },
-    // // setup() {
-    // //   onMounted(() => {
-    // //     this.methods.getComics();
-    // //   });
-    // // },
-    // methods: {
-    //   async getComics() {
-    //     console.log('CLIQUED');
-    //     await MarvelAPI.fetchAll('comics').then((response) => {
-    //       this.comics = response.data.data.results;
-    //     });
-    //   },
-    // },
   },
 });
 </script>
