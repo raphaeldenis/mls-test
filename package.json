@@ -51,6 +51,7 @@
     "vue-cli-plugin-tailwind": "~2.0.6",
     "vue-jest": "^5.0.0-0"
   },
+  "eslintIgnore": ["*.js"],
   "eslintConfig": {
     "root": true,
     "env": {
@@ -64,7 +65,6 @@
     "parserOptions": {
       "ecmaVersion": 2020
     },
-    "eslintIgnore": ["**/**/*.js"],
     "rules": {
       "import/extensions": [
         "error",
