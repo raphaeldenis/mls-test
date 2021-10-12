@@ -3,7 +3,7 @@
 import axios from 'axios';
 import md5 from 'md5';
 
-type Resource = 'heroes' | 'comics';
+type Resource = 'characters' | 'comics';
 
 const createMarvelAuth = (): string => {
   // TODO: check why env messed up
@@ -27,7 +27,7 @@ class ResourceAPI {
 
   public static async fetchByKey(resource: Resource, key: string, value: string): Promise<unknown> {
     return axios.get(
-      `${process.env.VUE_APP_APIURL}/${resource}?${key}=${value}&apikey=${process.env.API_KEY}`,
+      `${process.env.VUE_APP_APIURL}/${resource}&${key}=${value}?${this.authMarvel}`,
     );
   }
 }

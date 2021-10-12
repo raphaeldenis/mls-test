@@ -1,17 +1,20 @@
 <template>
-  <div class="home">
-    <Comics />
+  <div>
+   <h1 class="sm:text-3xl
+    text-2xl font-medium text-center title-font text-green-900 mb-4">My Light System API TEST</h1>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import Comics from '@/components/Comics/Comics.vue';
 
 export default defineComponent({
   name: 'Home',
-  components: {
-    Comics,
-  },
 });
 </script>
+
+<style scoped>
+h3 {
+  margin: 40px 0 0;
+}
+</style>
