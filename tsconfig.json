@@ -35,6 +35,10 @@
     "tests/**/*.tsx"
 , "src/services/marvelAPI.js"  ],
   "exclude": [
-    "node_modules"
-  ]
+    "node_modules",
+    "cypress/**/*.js",
+
+  ],
+  "types": ["cypress", "cypress-xpath"]
+
 }
