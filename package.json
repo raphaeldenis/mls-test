@@ -64,6 +64,7 @@
     "parserOptions": {
       "ecmaVersion": 2020
     },
+    "eslintIgnore": ["**/**/*.js"],
     "rules": {
       "import/extensions": [
         "error",
