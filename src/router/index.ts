@@ -10,13 +10,13 @@ const routes: Array<RouteRecordRaw> = [
     component: Home,
   },
   {
-    path: '/Characters',
-    name: 'Characters',
+    path: '/characters',
+    name: 'characters',
     component: Characters,
   },
   {
     path: '/comics',
-    name: 'Comics',
+    name: 'comics',
     component: Comics,
   },
 ];
